@@ -1,7 +1,7 @@
 import sys
 from PyQt4 import QtGui,QtCore
 from manager_ui import Ui_MainWindow
-from popups import add_person_popup
+from popups import popup
 
 class gui(QtGui.QMainWindow,Ui_MainWindow):
     
@@ -21,7 +21,7 @@ class gui(QtGui.QMainWindow,Ui_MainWindow):
         popup(parent = self)
         
     def add_person_cb(self):
-        self.create_popup_signal.emit(add_person_popup)
+        self.create_popup_signal.emit(popup)
     
     def signal_enable(self,widget,enable):
         widget.setEnabled(enable)

@@ -1,7 +1,7 @@
 from PyQt4 import QtGui,QtCore
 from base_popup import Ui_Frame
 
-class add_person_popup(Ui_Frame,QtGui.QFrame):
+class popup(Ui_Frame,QtGui.QFrame):
     
     def __init__(self,parent = None):
         Ui_Frame.__init__(self)
