@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'gui_0.0.1.ui'
+# Form implementation generated from reading ui file 'ui/gui_v0.0.2.ui'
 #
 # Created by: PyQt4 UI code generator 4.12.1
 #
@@ -28,17 +28,24 @@ class Ui_MainWindow(object):
         MainWindow.resize(800, 600)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.pushButton = QtGui.QPushButton(self.centralwidget)
-        self.pushButton.setGeometry(QtCore.QRect(50, 60, 141, 61))
-        self.pushButton.setObjectName(_fromUtf8("pushButton"))
-        self.pushButton_2 = QtGui.QPushButton(self.centralwidget)
-        self.pushButton_2.setGeometry(QtCore.QRect(50, 170, 141, 61))
-        self.pushButton_2.setObjectName(_fromUtf8("pushButton_2"))
-        self.tableWidget = QtGui.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(340, 50, 441, 481))
-        self.tableWidget.setObjectName(_fromUtf8("tableWidget"))
-        self.tableWidget.setColumnCount(0)
-        self.tableWidget.setRowCount(0)
+        self.horizontalLayout = QtGui.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.btn_frame = QtGui.QFrame(self.centralwidget)
+        self.btn_frame.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.btn_frame.setFrameShadow(QtGui.QFrame.Raised)
+        self.btn_frame.setObjectName(_fromUtf8("btn_frame"))
+        self.verticalLayout = QtGui.QVBoxLayout(self.btn_frame)
+        self.verticalLayout.setObjectName(_fromUtf8("verticalLayout"))
+        self.add_receipt_btn = QtGui.QPushButton(self.btn_frame)
+        self.add_receipt_btn.setObjectName(_fromUtf8("add_receipt_btn"))
+        self.verticalLayout.addWidget(self.add_receipt_btn)
+        self.add_person_btn = QtGui.QPushButton(self.btn_frame)
+        self.add_person_btn.setObjectName(_fromUtf8("add_person_btn"))
+        self.verticalLayout.addWidget(self.add_person_btn)
+        self.horizontalLayout.addWidget(self.btn_frame)
+        self.tableView = QtGui.QTableView(self.centralwidget)
+        self.tableView.setObjectName(_fromUtf8("tableView"))
+        self.horizontalLayout.addWidget(self.tableView)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 25))
@@ -53,6 +60,6 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
-        self.pushButton.setText(_translate("MainWindow", "Add Person", None))
-        self.pushButton_2.setText(_translate("MainWindow", "Add Receipt", None))
+        self.add_receipt_btn.setText(_translate("MainWindow", "Add Receipt", None))
+        self.add_person_btn.setText(_translate("MainWindow", "Add Person", None))
 
