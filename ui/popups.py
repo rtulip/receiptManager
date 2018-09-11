@@ -32,3 +32,15 @@ class popup(Ui_Frame,QtGui.QFrame):
                                       self.parent.width() - self.margin * 4,
                                       self.parent.height() - self.margin * 4))
         
+        
+class add_person_popup(popup):
+    
+    def __init__(self, parent = None):
+        popup.__init__(self,parent)
+                
+if __name__ == '__main__':
+    app = QtGui.QApplication([])
+    
+    test = add_person_popup(None)
+    
+    app.exec_()
