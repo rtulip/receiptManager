@@ -56,6 +56,7 @@ class Ui_Frame(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.groupBox.sizePolicy().hasHeightForWidth())
         self.groupBox.setSizePolicy(sizePolicy)
+        self.groupBox.setTitle(_fromUtf8(""))
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
         self.verticalLayout.addWidget(self.groupBox)
 
@@ -65,5 +66,4 @@ class Ui_Frame(object):
     def retranslateUi(self, Frame):
         Frame.setWindowTitle(_translate("Frame", "Frame", None))
         self.pushButton.setText(_translate("Frame", "X", None))
-        self.groupBox.setTitle(_translate("Frame", "GroupBox", None))
 

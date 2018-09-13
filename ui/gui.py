@@ -8,7 +8,8 @@ class gui(QtGui.QMainWindow,Ui_MainWindow):
     create_popup_signal = QtCore.pyqtSignal(object)
     resize_signal = QtCore.pyqtSignal()
     enable_signal = QtCore.pyqtSignal(object,object) 
-    def __init__(self):
+    def __init__(self,manager):
+        self.manager = manager
         QtGui.QWidget.__init__(self)
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
@@ -16,6 +17,7 @@ class gui(QtGui.QMainWindow,Ui_MainWindow):
         self.create_popup_signal.connect(self.create_popup)        
         self.enable_signal.connect(self.signal_enable)
         self.add_person_btn.clicked.connect(self.add_person_cb)
+        self.update_display()
         
     def create_popup(self,popup):
         popup(parent = self)
@@ -30,6 +32,13 @@ class gui(QtGui.QMainWindow,Ui_MainWindow):
         self.resize_signal.emit()
         return QtGui.QMainWindow.resizeEvent(self, *args, **kwargs)
     
+    def update_display(self):
+        string_list = "People: \n"
+        for name,values in self.manager.persons.iteritems():
+            string_list += name+": Owes: "+str(values["Owes"])+"\n"
+        self.label.setText(string_list)
+            
+        
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
     

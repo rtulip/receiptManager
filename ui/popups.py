@@ -7,13 +7,12 @@ class popup(Ui_Frame,QtGui.QFrame):
         Ui_Frame.__init__(self)
         QtGui.QFrame.__init__(self,parent = parent)
         self.setupUi(self)
-        self.margin = 50
+        self.percent = 0.75
         self.parent = parent
         self.parent.resize_signal.connect(self.resize_to_parent)
         self.parent.enable_signal.emit(self.parent.centralwidget,False)
         self.resize_to_parent()
         self.pushButton.clicked.connect(self.exit)
-        self.destroyed.connect(self.confirm_destroy)
         self.show()
         
     def exit(self):
@@ -22,22 +21,49 @@ class popup(Ui_Frame,QtGui.QFrame):
         self.hide()
         self.parent.enable_signal.emit(self.parent.centralwidget,True)
     
-    def confirm_destroy(self):
-        print "Destroyed popup"   
-    
     def resize_to_parent(self):
         
-        self.setGeometry(QtCore.QRect(self.parent.x() + self.margin,
-                                      self.parent.y() + self.margin,
-                                      self.parent.width() - self.margin * 4,
-                                      self.parent.height() - self.margin * 4))
+        self.setGeometry(QtCore.QRect(self.parent.width()*((1-self.percent)/2),
+                                      self.parent.height()*((1-self.percent)/2),
+                                      self.percent*self.parent.width(),
+                                      self.percent*self.parent.height()))
         
         
 class add_person_popup(popup):
     
     def __init__(self, parent = None):
         popup.__init__(self,parent)
-                
+        vertical_layout = QtGui.QVBoxLayout()
+        horizontal_layout = QtGui.QHBoxLayout()
+        self.text_label = QtGui.QLabel()
+        self.text_label.setText("Enter Name: ")
+        self.text_field = QtGui.QTextEdit()
+        self.text_field.setSizePolicy(QtGui.QSizePolicy(
+                                        QtGui.QSizePolicy.Expanding,
+                                        QtGui.QSizePolicy.Minimum))
+        horizontal_layout.addWidget(self.text_label)
+        horizontal_layout.addWidget(self.text_field)
+        
+        self.ok_button = QtGui.QPushButton("OK")
+        vertical_layout.addItem(horizontal_layout)
+        vertical_layout.addItem(QtGui.QSpacerItem(10,
+                                                  10,
+                                                  QtGui.QSizePolicy.Expanding,
+                                                  QtGui.QSizePolicy.Expanding))
+        vertical_layout.addWidget(self.ok_button)
+        self.groupBox.setLayout(vertical_layout)
+        
+        self.ok_button.clicked.connect(self.add_person)
+        
+        self.show()
+        
+    def add_person(self):
+        if self.text_field.toPlainText() not in self.parent.manager.persons:
+            self.parent.manager.persons[self.text_field.toPlainText()] = {"Owes":0,"Transactions": {}}
+            print self.parent.manager.persons
+            self.parent.update_display()
+        self.exit()
+        
 if __name__ == '__main__':
     app = QtGui.QApplication([])
     

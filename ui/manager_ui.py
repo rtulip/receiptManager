@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui/gui_v0.0.2.ui'
+# Form implementation generated from reading ui file 'gui_v0.0.2.ui'
 #
 # Created by: PyQt4 UI code generator 4.12.1
 #
@@ -43,9 +43,16 @@ class Ui_MainWindow(object):
         self.add_person_btn.setObjectName(_fromUtf8("add_person_btn"))
         self.verticalLayout.addWidget(self.add_person_btn)
         self.horizontalLayout.addWidget(self.btn_frame)
-        self.tableView = QtGui.QTableView(self.centralwidget)
-        self.tableView.setObjectName(_fromUtf8("tableView"))
-        self.horizontalLayout.addWidget(self.tableView)
+        self.label = QtGui.QLabel(self.centralwidget)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
+        self.label.setSizePolicy(sizePolicy)
+        self.label.setStyleSheet(_fromUtf8("background-color:white;"))
+        self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
+        self.label.setObjectName(_fromUtf8("label"))
+        self.horizontalLayout.addWidget(self.label)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 25))
@@ -62,4 +69,5 @@ class Ui_MainWindow(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow", None))
         self.add_receipt_btn.setText(_translate("MainWindow", "Add Receipt", None))
         self.add_person_btn.setText(_translate("MainWindow", "Add Person", None))
+        self.label.setText(_translate("MainWindow", "People:", None))
 
