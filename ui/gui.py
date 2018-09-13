@@ -1,4 +1,3 @@
-import sys
 from PyQt4 import QtGui,QtCore
 from manager_ui import Ui_MainWindow
 from popups import add_person_popup
@@ -38,10 +37,3 @@ class gui(QtGui.QMainWindow,Ui_MainWindow):
             string_list += name+": Owes: "+str(values["Owes"])+"\n"
         self.label.setText(string_list)
             
-        
-if __name__ == '__main__':
-    app = QtGui.QApplication(sys.argv)
-    
-    
-    
-    sys.exit(app.exec_())

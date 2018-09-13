@@ -59,7 +59,7 @@ class add_person_popup(popup):
         
     def add_person(self):
         if self.text_field.toPlainText() not in self.parent.manager.persons:
-            self.parent.manager.persons[self.text_field.toPlainText()] = {"Owes":0,"Transactions": {}}
+            self.parent.manager.persons[str(self.text_field.toPlainText())] = {"Owes":0,"Transactions": {}}
             print self.parent.manager.persons
             self.parent.update_display()
         self.exit()
