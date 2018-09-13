@@ -3,10 +3,12 @@ from base_popup import Ui_Frame
 
 class popup(Ui_Frame,QtGui.QFrame):
     
-    def __init__(self,parent = None):
+    def __init__(self,parent = None,title = None):
         Ui_Frame.__init__(self)
         QtGui.QFrame.__init__(self,parent = parent)
         self.setupUi(self)
+        if title:
+            self.title_label.setText(title)
         self.percent = 0.75
         self.parent = parent
         self.parent.resize_signal.connect(self.resize_to_parent)
@@ -32,7 +34,7 @@ class popup(Ui_Frame,QtGui.QFrame):
 class add_person_popup(popup):
     
     def __init__(self, parent = None):
-        popup.__init__(self,parent)
+        popup.__init__(self,parent,"Add New Person")
         vertical_layout = QtGui.QVBoxLayout()
         horizontal_layout = QtGui.QHBoxLayout()
         self.text_label = QtGui.QLabel()
@@ -63,6 +65,31 @@ class add_person_popup(popup):
             print self.parent.manager.persons
             self.parent.update_display()
         self.exit()
+
+class add_receipt_popup(popup):
+    
+    def __init__(self,parent = None):
+        popup.__init__(self, parent)
+        
+        self.groupBox.deleteLater()
+        self.groupBox.hide()
+        
+        self.scroll_area = QtGui.QScrollArea()
+        self.ok_button = QtGui.QPushButton("OK")
+        self.verticalLayout.addWidget(self.scroll_area)
+        self.verticalLayout.addWidget(self.ok_button)
+        self.scroll_area_layout = QtGui.QVBoxLayout()
+        
+        self.scroll_area_layout.addItem(QtGui.QSpacerItem(10,
+                                                  10,
+                                                  QtGui.QSizePolicy.Expanding,
+                                                  QtGui.QSizePolicy.Expanding))
+        self.scroll_area.setLayout(self.scroll_area_layout)
+        self.show()
+        
+    def spawn_item_area(self):
+        pass
+        
         
 if __name__ == '__main__':
     app = QtGui.QApplication([])

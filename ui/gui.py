@@ -1,6 +1,6 @@
 from PyQt4 import QtGui,QtCore
 from manager_ui import Ui_MainWindow
-from popups import add_person_popup
+from popups import add_person_popup, add_receipt_popup
 
 class gui(QtGui.QMainWindow,Ui_MainWindow):
     
@@ -16,6 +16,7 @@ class gui(QtGui.QMainWindow,Ui_MainWindow):
         self.create_popup_signal.connect(self.create_popup)        
         self.enable_signal.connect(self.signal_enable)
         self.add_person_btn.clicked.connect(self.add_person_cb)
+        self.add_receipt_btn.clicked.connect(self.add_receipt_cb)
         self.update_display()
         
     def create_popup(self,popup):
@@ -23,6 +24,9 @@ class gui(QtGui.QMainWindow,Ui_MainWindow):
         
     def add_person_cb(self):
         self.create_popup_signal.emit(add_person_popup)
+        
+    def add_receipt_cb(self):
+        self.create_popup_signal.emit(add_receipt_popup)
     
     def signal_enable(self,widget,enable):
         widget.setEnabled(enable)

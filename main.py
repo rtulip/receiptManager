@@ -48,7 +48,7 @@ def exit_program():
 
 if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
-    
+    app.setStyle("Plastique")
     man = manager()
     
     sys.exit(exit_program())

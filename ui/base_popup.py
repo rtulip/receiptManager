@@ -44,6 +44,9 @@ class Ui_Frame(object):
         self.frame.setObjectName(_fromUtf8("frame"))
         self.horizontalLayout = QtGui.QHBoxLayout(self.frame)
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.title_label = QtGui.QLabel(self.frame)
+        self.title_label.setObjectName(_fromUtf8("title_label"))
+        self.horizontalLayout.addWidget(self.title_label)
         spacerItem = QtGui.QSpacerItem(613, 20, QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.pushButton = QtGui.QPushButton(self.frame)
@@ -65,5 +68,6 @@ class Ui_Frame(object):
 
     def retranslateUi(self, Frame):
         Frame.setWindowTitle(_translate("Frame", "Frame", None))
+        self.title_label.setText(_translate("Frame", "TextLabel", None))
         self.pushButton.setText(_translate("Frame", "X", None))
 
